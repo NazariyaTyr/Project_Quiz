@@ -1,0 +1,95 @@
+.background{
+    min-height: 100%;
+    min-width: 640px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+}
+
+.Container{
+    font-family: 'Arsenal', sans-serif;
+    position: absolute;
+    width: 800px;
+    height: 500px;
+    margin-left: 340px;
+    margin-top: 100px;
+    background: #FFFFFF;
+    box-shadow: 9px 9px 29px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+}
+
+.text{
+    position: absolute;
+    width: 351px;
+    height: 75px;
+    font-weight: 700;
+    font-size: 54px;
+    margin-top: 40px;
+    margin-left: 225px;
+
+}
+
+.textQuestion{
+    position: absolute;
+    width: 609px;
+    height: 45px;
+    font-weight: 400;
+    font-size: 34px;
+    margin-top: 140px;
+    margin-left: 120px;
+}
+
+.buttonAnswer1{
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    background: #C4A3B7;
+    border-radius: 20px;
+    border: #C4A3B7;
+    font-family: 'Arsenal', sans-serif;
+    font-size: 30px;
+    margin-top: 250px;
+    margin-left: 150px;
+}
+.buttonAnswer2{
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    background: #C4A3B7;
+    border-radius: 20px;
+    border: #C4A3B7;
+    font-family: 'Arsenal', sans-serif;
+    font-size: 30px;
+    margin-top: 350px;
+    margin-left: 150px;
+}
+.buttonAnswer3{
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    background: #C4A3B7;
+    border-radius: 20px;
+    border: #C4A3B7;
+    font-family: 'Arsenal', sans-serif;
+    font-size: 30px;
+    margin-top: 250px;
+    margin-left: 450px;
+
+}
+.buttonAnswer4{
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    background: #C4A3B7;
+    border-radius: 20px;
+    border: #C4A3B7;
+    font-family: 'Arsenal', sans-serif;
+    font-size: 30px;
+    margin-top: 350px;
+    margin-left: 450px;
+
+}
+
