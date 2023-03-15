@@ -1,4 +1,4 @@
-.background{
+.background {
     min-height: 100%;
     min-width: 640px;
     width: 100%;
@@ -6,22 +6,84 @@
     position: fixed;
     top: 0;
     left: 0;
-
 }
 
-.Container{
+
+/*.Container*/
+
+.StartContainer,
+.QuizContainer {
     font-family: 'Arsenal', sans-serif;
     position: absolute;
     width: 800px;
     height: 500px;
-    margin-left: 340px;
-    margin-top: 100px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     background: #FFFFFF;
     box-shadow: 9px 9px 29px rgba(0, 0, 0, 0.6);
     border-radius: 20px;
 }
 
-.text{
+
+.StartContainer.activeStart{
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.topic {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 75px;
+    margin-top: 40px;
+    margin-left: 360px;
+}
+
+.text {
+    width: 665px;
+    height: 150px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+    text-align: center;
+    margin-left: 70px;
+    margin-top: -30px;
+}
+
+.start button{
+    position: absolute;
+    top: 80%;
+    left: 60%;
+    transform: translate(-80%, -60%);
+    width: 301px;
+    height: 76px;
+    cursor: pointer;
+}
+
+.start {
+    position: absolute;
+    top: 80%;
+    left: 60%;
+    transform: translate(-80%, -60%);
+    width: 301px;
+    height: 76px;
+    background: #C4A3B7;
+    border-radius: 20px;
+    font-family: 'Arsenal', sans-serif;
+    border: #C4A3B7;
+    font-size: 40px;
+}
+
+.start:active {
+    background: #A77292;
+}
+
+
+.textMain {
     position: absolute;
     width: 351px;
     height: 75px;
@@ -32,7 +94,7 @@
 
 }
 
-.textQuestion{
+.textQuestion {
     position: absolute;
     width: 609px;
     height: 45px;
@@ -42,9 +104,26 @@
     margin-left: 120px;
 }
 
-.buttonAnswer1{
+.timeTxt {
     position: absolute;
-    width: 200px;
+    margin-left: 670px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.timer {
+    position: absolute;
+    margin-left: 670px;
+    margin-left: 730px;
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: 24px;
+}
+
+.Answer1 {
+    position: absolute;
+    width: 240px;
     height: 60px;
     background: #C4A3B7;
     border-radius: 20px;
@@ -52,11 +131,16 @@
     font-family: 'Arsenal', sans-serif;
     font-size: 30px;
     margin-top: 250px;
-    margin-left: 150px;
+    margin-left: 130px;
 }
-.buttonAnswer2{
+
+.Answer1:active {
+    background: #A77292;
+}
+
+.Answer2 {
     position: absolute;
-    width: 200px;
+    width: 240px;
     height: 60px;
     background: #C4A3B7;
     border-radius: 20px;
@@ -64,11 +148,16 @@
     font-family: 'Arsenal', sans-serif;
     font-size: 30px;
     margin-top: 350px;
-    margin-left: 150px;
+    margin-left: 130px;
 }
-.buttonAnswer3{
+
+.Answer2:active {
+    background: #A77292;
+}
+
+.Answer3 {
     position: absolute;
-    width: 200px;
+    width: 240px;
     height: 60px;
     background: #C4A3B7;
     border-radius: 20px;
@@ -76,12 +165,16 @@
     font-family: 'Arsenal', sans-serif;
     font-size: 30px;
     margin-top: 250px;
-    margin-left: 450px;
-
+    margin-left: 430px;
 }
-.buttonAnswer4{
+
+.Answer3:active {
+    background: #A77292;
+}
+
+.Answer4 {
     position: absolute;
-    width: 200px;
+    width: 240px;
     height: 60px;
     background: #C4A3B7;
     border-radius: 20px;
@@ -89,7 +182,20 @@
     font-family: 'Arsenal', sans-serif;
     font-size: 30px;
     margin-top: 350px;
-    margin-left: 450px;
+    margin-left: 430px;
+}
+
+.Answer4:active {
+    background: #A77292;
+}
+
+.next_butt {
+    margin-left: 729px;
+    margin-top: 430px;
+    width: 40px;
 
 }
 
+@media (max-width: 650px) {
+
+}
