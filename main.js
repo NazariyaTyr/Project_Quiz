@@ -20,12 +20,18 @@ const question = [
         options: ['42', '23', '44', '46'],
         answer: '46'
     },
+
     {
         question: 'What is the capital of Canada?',
         options: ['Toronto', 'Ottawa', 'Vancouver', 'Athens'],
         answer: 'Ottawa'
-    }
+    },
 
+    {
+        question: 'Which of these characters are friends with Harry Potter?',
+        options: ['Ron Weasley', 'Draco Malfoy', 'Hermione Granger', 'Rubeus Hagrid'],
+        answer: ['Ron Weasley','Hermione Granger']
+    }
 
 ]
 
@@ -38,7 +44,6 @@ const TitleText = document.querySelector('#Title');
 const submBut = document.querySelector('#Submit')
 const timer = document.querySelector('#timer')
 const blocktime = document.querySelector('#time')
-const questionTime = 10;
 
 let count = 10;
 let selectedAnswer;
@@ -58,8 +63,8 @@ function Quiz() {
     clearPage();
     showContainer();
     renderCounter();
-    TIMER = setInterval(renderCounter, 1000); // 1000ms = 1s
-    //checkAnswer();
+    TIMER = setInterval(renderCounter, 1000);
+
 }
 
 function startPage() {
@@ -69,7 +74,6 @@ function startPage() {
     submBut.innerHTML = '<button class="start" id="Start" onclick="Quiz()" >Start</button>'
 }
 
-////////////////////////////////////////////////////////////////////////////////////////
 function renderCounter() {
     if (count >= 0) {
         blocktime.innerHTML = count;
@@ -91,13 +95,56 @@ function renderCounter() {
     }
 }
 
-//////////////////////////////////////////////////
-
 Answer.addEventListener('click', e => {
     selectedAnswerText = e.target.innerText
     selectedAnswer = e.target
     if (selectedAnswer.className === "buttonContainer") return
-    clearInterval(TIMER)
+    if (Array.isArray(question[question_Index]['answer'])) {
+        checkAnswerMultiply();
+    } else {
+        checkAnswerSingle()
+    }
+});
+
+function clearPage() {
+    TitleText.innerHTML = ''
+    Question.innerHTML = '';
+    Answer.innerHTML = '';
+    submBut.innerHTML = ''
+}
+
+function showContainer() {
+    timer.innerHTML = `Time`
+    const titleTemplate = `Question %number%/${question.length}`
+    const titleHTML = titleTemplate.replace('%number%', question_Index + 1)
+    TitleText.classList.add('textMain1')
+    TitleText.innerHTML = titleHTML
+
+    if (Array.isArray(question[question_Index]['answer'])) {
+        Question.innerHTML = question[question_Index]['question']+'(Multiply answer)';
+
+    } else {
+        Question.innerHTML = question[question_Index]['question'];
+    }
+
+    let optionsTemplate = `
+        <button value="1" class="Answer">%answer%</button>
+        <button value="2" class="Answer" >%answer%</button>
+        <button value="3" class="Answer">%answer%</button>
+        <button value="4" class="Answer">%answer%</button>
+    `;
+
+    for (text_answer of question[question_Index]['options']) {
+        const answerHTML = optionsTemplate.replace('%answer%', text_answer)
+        optionsTemplate = answerHTML
+        Answer.innerHTML = answerHTML
+    }
+    submBut.classList.add('submitNextContainer')
+    submBut.innerHTML = `<input class="next_butt" onclick="checkAnswerEvery()" id="Submit" type="image" name="next" src="img/carbon_next.jpg" alt="Submit" style="width: 50px;"/>`
+}
+
+function checkAnswerSingle() {
+    clearInterval(TIMER);
     if (selectedAnswerText === question[question_Index]['answer']) {
         selectedAnswer.classList.add('AnswerGood')
     } else {
@@ -110,57 +157,22 @@ Answer.addEventListener('click', e => {
         }
         button.disabled = true
     })
-
-});
-
-function clearPage() {
-    TitleText.innerHTML = ''
-    Question.innerHTML = '';
-    Answer.innerHTML = '';
-    submBut.innerHTML = ''
 }
 
-function showContainer() {
+function checkAnswerMultiply() {
 
-    timer.innerHTML = `Time`
-
-    const titleTemplate = `Question %number%/5`
-    const titleHTML = titleTemplate.replace('%number%', question_Index + 1)
-
-    TitleText.classList.add('textMain1')
-    TitleText.innerHTML = titleHTML
-    Question.innerHTML = question[question_Index]['question'];
-
-    //setInterval(subtractTime, 1000)
-
-
-    let optionsTemplate = `
-        <button value="1" class="Answer">%answer%</button>
-        <button value="2" class="Answer" >%answer%</button>
-        <button value="3" class="Answer">%answer%</button>
-        <button value="4" class="Answer">%answer%</button>
-    `;
-
-    for (text_answer of question[question_Index]['options']) {
-
-        const answerHTML = optionsTemplate.replace('%answer%', text_answer)
-        optionsTemplate = answerHTML
-
-        Answer.innerHTML = answerHTML
+    if (question[question_Index]['answer'].includes(selectedAnswerText)) {
+        selectedAnswer.classList.add('AnswerGood')
+        score=score+0.5
+    } else {
+        selectedAnswer.classList.add('AnswerEror')
     }
-    submBut.classList.add('submitNextContainer')
-    submBut.innerHTML = `<input class="next_butt" onclick="checkAnswer()" id="Submit" type="image" name="next" src="img/carbon_next.jpg" alt="Submit" style="width: 50px;"/>`
-
-
 }
 
-function checkAnswer() {
-
-    if (!selectedAnswer) {
-        return
-    }
-
+function checkAnswerEvery() {
+    if (!selectedAnswer) return;
     count = 10;
+    clearInterval(TIMER);
     TIMER = setInterval(renderCounter, 1000); // 1000ms = 1s
     blocktime.innerHTML = count;
     selectedAnswer = 0
@@ -170,13 +182,10 @@ function checkAnswer() {
     }
 
     if (question_Index + 1 !== question.length) {
-
         question_Index++
         clearPage()
         showContainer()
     } else {
-
-
         clearPage()
         showResults()
     }
@@ -204,7 +213,6 @@ function showResults() {
         title = 'Good!'
         message = 'You answered most of the answers correctly 🦇'
     } else {
-
         title = 'Can be better'
         message = 'You answered less than half of the correct answers 👣'
     }
