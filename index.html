@@ -19,20 +19,21 @@
 <body>
 <link rel="stylesheet" href="styles.css">
 <div class="background">
-    <img src="img/background.png">
+    <img alt="" src="img/background.png">
 </div>
 
-<div class="QuizContainer" id="headerContainer">
+<div class="quizContainer" id="headerContainer">
+    <div class="timerContainer" >
+        <p class="txtTime" id="timer"></p>
+        <p class="time" id="time"></p>
+    </div>
     <p class="textMain" id="Title">Let's start</p>
     <p class="textQuestion" id="Question">Test your knowledge</p>
     <div class="buttonContainer" id="Answers">
-<!--        <button value="1" class="Answer">%answer%</button>-->
-<!--        <button value="2" class="Answer" >%answer%</button>-->
-<!--        <button value="3" class="Answer">%answer%</button>-->
-<!--        <button value="4" class="Answer">%answer%</button>-->
+
     </div>
-    <div id="Submit">
-        <button class="start" id="Start" >Start</button>
+    <div class="submitContainer" id="Submit" >
+        <button class="start" id="Start" onclick="Quiz()" >Start</button>
     </div>
 
 </div>
